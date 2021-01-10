@@ -1,0 +1,14 @@
+#Logging System Details
+logFileLocation : /home/jab/log/hydro/
+infoLogFile : hydInfo.log
+debuglogFile : hydDebug.log
+
+#Database system details
+dbuserName : jab
+dbpassword : 222
+dbhost : 127.0.0.1
+dbname : testSchema
+
+#CherryPi Settings
+chpHost : 0.0.0.0
+chpPort : 50091
