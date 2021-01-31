@@ -84,7 +84,7 @@ pip to the rescue, we can make a copy of all requiered packages and install them
 
 This will create a requirements.txt file for you, so now we have a requirements.txt file in project root, from here we will install the repo on a new PC, then create the venv env dir in http-services, the start the venv as shown above then we will use the following command to install all requiered packages
 
-```bash
+```
  Install packages to venv, this is done from root dir where requirements.txt lives
     $ python3 -m pip install -r requirements.txt
 ```
