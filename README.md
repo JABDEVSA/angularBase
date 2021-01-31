@@ -5,7 +5,7 @@ This repo is ment for the very start of a project, here we have an example of a 
 So let's get started, it is recommended to clone the repo first:
 ```
     $ git clone git@github.com:JABDEVSA/angularBase.git
-    $ or
+      or
     $ git clone https://github.com/JABDEVSA/angularBase.git
 ```
 
@@ -95,7 +95,7 @@ This will install all your packages cool ne!
 
 I will recomend to delete the webapp dir and create a new one and the greate a new project in it, the project that I am talking about is angular. Obviously this will be done only on the creation of a new clean project structure not an completed one please use commen sense when working here.
 
-Okay so for that we have a couple of requieremnets here:
+Okay so for that we have a couple of requirements here:
 ```
  First install nodejs
     $ sudo apt install nodejs
@@ -123,7 +123,7 @@ Now just like the http-service we have a new clean struture and all, we can star
 
 This will setup your enviroment with your git project and ensure that we do not copy overloaded dir's like node_modules and all the other parts that will overload the project size. Once again if you look in the root dir of webapp you will see we have a gitnore file which tells git to exclude these files, it works no need to change it just add if you need to.
 
-Now we develop our webapp and push to git, we only push what is needed and then we clone the project to a new PC system now we need to get all the models inplace to have the system working again, for this we have the following procedure, please follow these steps to install webapp on a new PC:
+Now we develop our webapp and push to git, we only push what is needed and then we clone the project to a new PC system now we need to get all the models in place to have the system working again, for this we have the following procedure, please follow these steps to install webapp on a new PC:
 
 ```
  Clone the repo
@@ -142,6 +142,99 @@ Now we develop our webapp and push to git, we only push what is needed and then 
 And there you go we have http-service installed and webapp.
 
 I will need to have a automated script that will do this for us, the next in this project will be unit testing and then also docker images this will follow soon.
+
+## MySql works
+
+For this and any type of project we need a database, this can be a remote or a local style database, for these projects we are initially using a local database and it is a real pain to do this locally if this is your first time, so let's setup a dummy database here.
+
+note: this example is for developemnt purposes and please ensure that on production the credentials are changed and secure, this will expose your database if left like this.
+
+Lets install and configure our mysql database:
+
+```
+ Install mysql on ubuntu
+    $ sudo apt install mysql-server
+
+ Please note that you installed it using sudo so change to root and login
+    $ sudo su
+    $ mysql
+    
+ You are now logged in as root, create a new user with the following
+    $ mysql> CREATE USER 'jab'@'localhost' IDENTIFIED BY '222';
+    $ mysql> GRANT ALL PRIVILEGES ON * . * TO 'jab'@'localhost';
+    $ mysql> UPDATE mysql.user SET plugin = 'caching_sha2_password' where user = 'jab';
+    $ mysql> FLUSH PRIVILEGES;
+
+ Now logout with ctrl-d and again ctrl-d you are back in your user
+ Login to mysql as your user in this case jab with
+    $ mysql -u jab -p
+    $ enter password
+
+ If you get access you are done!
+ If not check creds as root and ensure all info is correct
+    $ mysql> select user, host, plugin from mysql.user;
+
+    +------------------+-----------+-----------------------+
+    | user             | host      | plugin                |
+    +------------------+-----------+-----------------------+
+    | debian-sys-maint | localhost | caching_sha2_password |
+    | jab              | localhost | caching_sha2_password |
+    | mysql.infoschema | localhost | caching_sha2_password |
+    | mysql.session    | localhost | caching_sha2_password |
+    | mysql.sys        | localhost | caching_sha2_password |
+    | root             | localhost | auth_socket           |
+    +------------------+-----------+-----------------------+
+    6 rows in set (0.00 sec)
+
+```
+
+With the DB setup you can proceed to the configurations file to connect.
+
+## Config file
+
+This configurations file makes use of yaml to register all credentials and port configurations needed to setup and run the project. It is quite self explandatory, if we need to have other, additional or new configurations just add it and like the main.py application with the detail.
+
+```
+    #Logging System Details
+    logFileLocation : /home/jab/log/hydro/
+    infoLogFile : hydInfo.log
+    debuglogFile : hydDebug.log
+
+    #Database system details
+    dbuserName : jab
+    dbpassword : 222
+    dbhost : 127.0.0.1
+    dbname : hydroclear
+
+    #CherryPi Settings
+    chpHost : 0.0.0.0
+    chpPort : 50091
+
+```
+
+This file must be in place for the system to start-up and run.
+
+## The http-service files
+
+In the http-service we have a core files:
+```
+    --http-service
+     |--Main
+     |     |-main.py
+     |-httpservice.py
+     |-logger.py
+     |-mysqldrv.py
+
+```
+
+The main.py application is our initial entry point it will read the config file and setup the rest.
+
+The httpservice.py file is our REST application making use of flask under cherrypy to serve it.
+
+The logger.py file for logging, at this moment please look in ${pwd}/log/projectName/projectName_Info.log or Debug.log. Please note this is for development, experimental and excersize purposes this will be replaced with python logger soon.
+
+The mysqldrv.py for the mysql operations needed.
+
 
 ## Have fun and enjoy
 
