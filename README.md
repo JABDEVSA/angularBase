@@ -1,5 +1,5 @@
-# hydroclear
-HydroClear Ellisras Angular Build
+# Angular and our REST base application
+Here we have a base for our webapp, now here we will explain how it works ne!
 
 #create a requirements.txt
 
