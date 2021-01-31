@@ -3,7 +3,7 @@
 This repo is ment for the very start of a project, here we have an example of a http-service that is created in python also known as a REST backend, please refer to the http-service folder/dir.Then we have the webapp, this is based on our very cool Angular systems and packages. 
 
 So lets get started, it is recommended to clone the repo first:
-```bash
+```
     $ git clone git@github.com:JABDEVSA/angularBase.git
     $ or
     $ git clone https://github.com/JABDEVSA/angularBase.git
@@ -16,7 +16,7 @@ Okay so now we have the Angular Base Repo on your PC cool, let's look at the fol
 ## To start this off
 
 Create a new project in git with your project name, clone the repo to your PC and ensure that you clone this base repo aswel so we have the following standard, you will see once both repo's are cloned we copy the base project into the new project repo with the following:
-```bash
+```
   Create a new git dir named project
     $ mkdir project
  
@@ -41,7 +41,7 @@ With this done confirm that you have all the files and then let's proceed with t
 This system makes use of python venv to build an enviroment where we have all our requiered packages, this is installed in one env dir, this makes it easy to work with the system and we do not make use of the systems packages. So let's do the following here:
 
 Install venv:
-```bash
+```
   First install pip
     $ sudo apt install python3-pip
  
@@ -60,7 +60,7 @@ Install venv:
 ```
 
 With this done we have a clean venv system with its own Python3 binary and packages, here we can do the following:
-```bash
+```
   Find the shebang of python3 for the applications
     $ which python3
  
@@ -75,7 +75,7 @@ So let's say we have a new PC system and we copy the repo to it, how do we insta
 
 pip to the rescue, we can make a copy of all requiered packages and install them by using this file ie requirements.txt, so first lets generate on by execurting the following command, please ensure that you venv env is activated when doing this so here we go, first project is done and you want to backup all packages:
 
-```bash
+```
  Ensure that you are in the root dir of the project
 
  Backup/Create a list of requiered packages with
