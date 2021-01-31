@@ -13,7 +13,7 @@ note: if you are using the ssh option which is the best ensure that you have you
 
 Okay so now we have the Angular Base Repo on your PC cool, let's look at the following.
 
-##The http-service things
+## The http-service things
 
 This system makes use of 
 
