@@ -219,7 +219,7 @@ This file must be in place for the system to start-up and run.
 In the http-service we have a core files:
 ```
     --http-service
-     |--Main
+     |--main
      |     |-main.py
      |-httpservice.py
      |-logger.py
@@ -234,6 +234,15 @@ The httpservice.py file is our REST application making use of flask under cherry
 The logger.py file for logging, at this moment please look in ${pwd}/log/projectName/projectName_Info.log or Debug.log. Please note this is for development, experimental and excersize purposes this will be replaced with python logger soon.
 
 The mysqldrv.py for the mysql operations needed.
+
+To start this backend do the following:
+```
+    $ cd httpservice
+    $ ./main/main.py
+
+ For any development please source env/bin/activate
+
+```
 
 
 ## Have fun and enjoy
