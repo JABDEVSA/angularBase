@@ -1,0 +1,23 @@
+CREATE TABLE Equipment (
+  id int NOT NULL AUTO_INCREMENT,
+  Clients_Name text,
+  Contract_Number text,
+  PO_Number text,
+  Machine_ID text,
+  Location text,
+  Responsible_Person text,
+  Email_Address text,
+  Tell_Work text,
+  Tell_Cell text,
+  Services_Required text,
+  Services_Planned text,
+  Services_Completed text,
+  Services_Left text,
+  Equipment_Active text,
+  PO_Completed text,
+  PO_Cancelled text,
+  Operator text,
+  Date_Created text,
+  DateModified datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=1801 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Hydro Clear Equipment Details'

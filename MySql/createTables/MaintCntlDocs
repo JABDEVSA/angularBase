@@ -1,0 +1,17 @@
+CREATE TABLE MaintCntlDocs (
+  id int NOT NULL AUTO_INCREMENT,
+  Clients_Name text,
+  PO_Number text,
+  Maint_id text,
+  Machine_ID text,
+  FileContent_Chk longblob,
+  FileName_Chk text,
+  FileType_Chk text,
+  FileContent_Inv longblob,
+  FileName_Inv text,
+  FileType_Inv text,
+  oppName text,
+  DateEntered text,
+  DateModified datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

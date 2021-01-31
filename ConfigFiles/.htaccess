@@ -1,0 +1,20 @@
+Options +FollowSymlinks
+RewriteEngine on
+RewriteBase "/hydroclear"
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule RegisterNewUser$ http://123.45.6.235:50091/hydroclear/services/RegisterNewUser [NC,R=307]
+RewriteRule UserLogin$ http://123.45.6.235:50091/hydroclear/services/UserLogin [NC,R=307]
+RewriteRule runTestNow$ http://123.45.6.235:50091/hydroclear/services/runTestNow [NC]
+RewriteRule fetchTableData$ http://123.45.6.235:50091/hydroclear/services/fetchTableData [NC,R=307]
+RewriteRule populateDB$ http://123.45.6.235:50091/hydroclear/services/populateDB [NC]
+RewriteRule recreateTables$ http://123.45.6.235:50091/hydroclear/services/recreateTables [NC]
+RewriteRule getClientsData$ http://123.45.6.235:50091/hydroclear/services/getClientsData [NC]
+RewriteRule getPOsData$ http://123.45.6.235:50091/hydroclear/services/getPOsData [NC]
+RewriteRule getMaintananceData$ http://123.45.6.235:50091/hydroclear/services/getMaintananceData [NC]
+RewriteRule getEquipmentData$ http://123.45.6.235:50091/hydroclear/services/getEquipmentData [NC]
+RewriteRule actionsClientsTable$ http://123.45.6.235:50091/hydroclear/services/actionsClientsTable [NC,R=307]
+RewriteRule actionsPOsTable$ http://123.45.6.235:50091/hydroclear/services/actionsPOsTable [NC,R=307]
+RewriteRule actionsMchTable$ http://123.45.6.235:50091/hydroclear/services/actionsMchTable [NC,R=307]
+RewriteRule calendarActions$ http://123.45.6.235:50091/hydroclear/services/calendarActions [NC,R=307]
+RewriteRule submitMntCntlDocs$ http://123.45.6.235:50091/hydroclear/services/submitMntCntlDocs [NC,R=307]
+RewriteRule retrieveMainCDocs$ http://123.45.6.235:50091/hydroclear/services/retrieveMainCDocs [NC,R=307]

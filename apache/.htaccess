@@ -1,6 +1,0 @@
-Options +FollowSymlinks
-RewriteEngine on
-RewriteBase "/hydroclear"
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule testGet$ http://192.168.43.236:50091/hydroclear/services/testGet [NC]
-RewriteRule testPost$ http://192.168.43.236:50091/hydroclear/services/testPost [NC,R=307]

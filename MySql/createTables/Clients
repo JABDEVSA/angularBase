@@ -1,0 +1,18 @@
+CREATE TABLE Clients (  
+	id INT NOT NULL AUTO_INCREMENT,  
+	Clients_Name TEXT NULL,  
+	VAT_Number TEXT NULL,  
+	Physical_Address TEXT NULL,  
+	Postal_Address TEXT NULL,  
+	Postal_Code TEXT NULL,  
+	Contact_Person TEXT NULL,  
+	Telelphone_W TEXT NULL,  
+	Telelphone_C TEXT NULL,  
+	Email_Address TEXT NULL,
+	Contract_Number TEXT NULL,  
+	DateCreated TEXT NULL,  
+	DateModified DATETIME NULL DEFAULT CURRENT_TIMESTAMP,  
+	Operators_Name TEXT NULL,  
+	Active TEXT NULL,  
+	PRIMARY KEY (id))
+COMMENT = 'Hydro Clear Clients Table';

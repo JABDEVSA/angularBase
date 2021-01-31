@@ -1,0 +1,16 @@
+CREATE TABLE userAuth (
+  id int NOT NULL AUTO_INCREMENT,
+  FisrtName text,
+  LastName text,
+  EMPnumber text,
+  CellNumber text,
+  emailAddr text,
+  Password text,
+  DateTime datetime DEFAULT CURRENT_TIMESTAMP,
+  Administrator text,
+  PowerUser text,
+  UserViewer text,
+  DateCreated text,
+  ActiveUser text,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='HydroClear User Authentication Table'
