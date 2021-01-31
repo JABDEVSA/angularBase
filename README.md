@@ -36,7 +36,7 @@ Create a new project in git with your project name, clone the repo to your PC an
 
 With this done confirm that you have all the files and then let's proceed with the following.
 
-## The http-service things
+## The http-service
 
 This system makes use of python venv to build an enviroment where we have all our requiered packages, this is installed in one env dir, this makes it easy to work with the system and we do not make use of the systems packages. So let's do the following here:
 
@@ -69,7 +69,37 @@ With this done we have a clean venv system with its own Python3 binary and packa
  
 ```
 
-So we have an enviroment where we can setup a brand new project
+So we have an enviroment where we can setup a brand new project of the REST service, so we can develop our apps and then install packages now we are done and we want to push to the project repo, and for this we do not want to include the env file. To ensure that we do not include all the env files we have a gitnore file. This file tells git not to copy a specific dir, have a look you will see the exclusion.
+
+So let's say we have a new PC system and we copy the repo to it, how do we install the requiered packages?
+
+pip to the rescue, we can make a copy of all requiered packages and install them by using this file ie requirements.txt, so first lets generate on by execurting the following command, please ensure that you venv env is activated when doing this so here we go, first project is done and you want to backup all packages:
+
+```bash
+ Ensure that you are in the root dir of the project
+
+ Backup/Create a list of requiered packages with
+    $ pip freeze > requirements.txt
+```
+
+This will create a requirements.txt file for you, so now we have a requirements.txt file in project root, from here we will install the repo on a new PC, then create the venv env dir in http-services, the start the venv as shown above then we will use the following command to install all requiered packages
+
+```bash
+ Install packages to venv, this is done from root dir where requirements.txt lives
+    $ python3 -m pip install -r requirements.txt
+```
+
+This will install all your packages coolne!
+
+
+
+
+
+
+
+
+
+
 
 
 #create a requirements.txt
