@@ -188,7 +188,25 @@ Lets install and configure our mysql database:
 
 ```
 
+To ensure that we can connect from any ip please do the following:
+```
+ Change mysql.config file with
+  $ sudo nano mysql.conf.d/mysqld.cnf
+
+ Change the following
+  mysql.conf.d/mysqld.cnf:bind-address            = 0.0.0.0
+  mysql.conf.d/mysqld.cnf:mysqlx-bind-address     = 0.0.0.0
+
+ Then restart the services
+  $ sudo systemctl restart mysql.service
+  $ sudo systemctl status mysql.service
+```
+
+Here is a tip: Use MySqlBench and connect over ssh to work with the database via remote on linux after all users are setup.
+
 With the DB setup you can proceed to the configurations file to connect.
+
+
 
 ## Config file
 
