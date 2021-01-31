@@ -1,5 +1,13 @@
 # Angular and our REST base application
-Here we have a base for our webapp, now here we will explain how it works ne!
+
+This repo is ment for the very start of a project, here we have an example of a http-service that is created in python also known as a REST backend, please refer to the http-service folder/dir.Then we have the webapp, this is based on our very cool Angular systems and packages. 
+
+So lets get started, it is recommended to clone the repo first:
+'bash'
+'git clone git@github.com:JABDEVSA/angularBase.git
+'or
+'git clone https://github.com/JABDEVSA/angularBase.git
+'
 
 #create a requirements.txt
 
