@@ -11,7 +11,7 @@ import cherrypy
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
-logger = logging.getLogger()
+logger = logging.getLogger(__name__)
 
 class httpService:
 
@@ -20,7 +20,6 @@ class httpService:
         self.host = host
         self.port = port      
         self.dataService = dataservice
-        self.DateTimeNow = ''
 
         self.web_app = Flask(__name__)
         self.cors = CORS(self.web_app)

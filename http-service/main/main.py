@@ -16,7 +16,7 @@ from httpservice import *
 
 configs = {}
 
-with open(f'../config/hydroConf.yaml') as fp:
+with open(f'../config/http-service-conf.yaml') as fp:
     configs = yaml.load(fp, Loader=yaml.FullLoader)
 
 #Project Info
@@ -40,7 +40,7 @@ httpPort = configs["chpPort"]
 #SetupLogging
 
 loggerSetup = logSetupClass(projectName, logFilename, logLevel)
-logger = logging.getLogger()
+logger = logging.getLogger(__name__)
 logging.debug(f"initiate http-service now")
 sqlDrv = mysqlDrv(userName, password, host, db)
 logging.debug(f"initiate mysqlDriver now")

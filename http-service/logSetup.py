@@ -22,8 +22,8 @@ class logSetupClass:
             logger.setLevel(logging.DEBUG)
 
         rotHandel = RotatingFileHandler(logFileComplete, backupCount=5)
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
         rotHandel.setFormatter(formatter)
         logger.addHandler(rotHandel)
         rotHandel.doRollover()
-        logging.debug(f"Logging Setup Done!")  
+        logging.debug(f"LOGGER: Setup Done!")  

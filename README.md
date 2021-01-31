@@ -249,7 +249,7 @@ The main.py application is our initial entry point it will read the config file 
 
 The httpservice.py file is our REST application making use of flask under cherrypy to serve it.
 
-The logger.py file for logging, at this moment please look in ${pwd}/log/projectName/projectName_Info.log or Debug.log. Please note this is for development, experimental and excersize purposes this will be replaced with python logger soon.
+The logger.py file for setting up the python logger.
 
 The mysqldrv.py for the mysql operations needed. Please ensure to create databse for project and update config file.
 

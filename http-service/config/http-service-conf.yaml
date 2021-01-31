@@ -13,4 +13,4 @@ dbname : hydroclear
 
 #CherryPi Settings
 chpHost : 0.0.0.0
-chpPort : 50091
+chpPort : 5000

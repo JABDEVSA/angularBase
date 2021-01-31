@@ -4,7 +4,7 @@ import logging
 
 from mysql.connector import errorcode
 
-logger = logging.getLogger()
+logger = logging.getLogger(__name__)
 
 class mysqlDrv:    
 
@@ -15,16 +15,12 @@ class mysqlDrv:
         self.host = host
         self.db = db
         self.result = ''
-        self.DateTimeNow = ''
-
         self.cnx = mysql.connector.connect(user = self.uName, password = self.passwd , host = self.host, database = self.db)
         self.cnx.close()
 
         logging.debug(f"SQLDRV: init done")
 
     def conDB(self):
-
-        self.DateTimeNow = datetime.datetime.now()
         
         logging.debug(f"SQLDRV: Creating Connection")
         try:
@@ -35,8 +31,6 @@ class mysqlDrv:
         
 
     def sqlCmd(self, sql):
-
-        self.DateTimeNow = datetime.datetime.now()
 
         logging.debug(f"SQLDRV: Starting sqlCmd Function")
         logging.debug(f"SQLDRV: sqlStr: {sql}")
@@ -54,8 +48,6 @@ class mysqlDrv:
             return "Failed"
 
     def sqlFetchAll(self, sql):
-
-        self.DateTimeNow = datetime.datetime.now()
 
         logging.debug(f"SQLDRV: Starting sqlFetchAll Function")
         logging.debug(f"SQLDRV: sqlStr: {sql}")
