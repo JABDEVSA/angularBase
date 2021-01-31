@@ -1,5 +1,6 @@
 import json
 import datetime
+import logging
 
 import sys
 import os
@@ -10,12 +11,14 @@ import cherrypy
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
+logger = logging.getLogger()
+
 class httpService:
 
-    def __init__(self, host, port, logging, dataservice):
+    def __init__(self, host, port, dataservice):        
+
         self.host = host
-        self.port = port
-        self.log = logging        
+        self.port = port      
         self.dataService = dataservice
         self.DateTimeNow = ''
 
@@ -40,17 +43,18 @@ class httpService:
         self.web_app.add_url_rule("/hydroclear/services/runPostTest", "runPostTest",
                                   self.runPostTest, methods=["POST"])
 
+        
+        logging.debug(f"REST: init done")
+
     def runGetTest(self):
 
-        self.DateTimeNow = datetime.datetime.now()
-        self.log.info(f'{self.DateTimeNow}:\tRunning runGetTest()')
+        logging.debug(f"REST: => runGetTest()")
 
         return jsonify(result="runGetTest"), 200
 
     def runPostTest(self):
     
-        self.DateTimeNow = datetime.datetime.now()
-        self.log.info(f'{self.DateTimeNow}:\tRunning runPostTest()')
+        logging.debug(f"REST: => runPostTest()")
 
         data = json.loads(request.data)
 

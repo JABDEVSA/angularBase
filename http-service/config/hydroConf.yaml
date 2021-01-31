@@ -1,7 +1,9 @@
+#ProjectDetails
+projectName : angulatBase
+
 #Logging System Details
-logFileLocation : /home/jab/log/hydro/
-infoLogFile : hydInfo.log
-debuglogFile : hydDebug.log
+filename : angulatBase.log
+level : debug
 
 #Database system details
 dbuserName : jab

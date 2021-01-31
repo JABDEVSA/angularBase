@@ -3,26 +3,28 @@
 import sys
 sys.path.append("..")
 import os
+import getpass
 import datetime
 import yaml
 import cherrypy
 
 os.chdir(os.path.dirname(__file__))
-print(os.getcwd())
 
 from mysqldrv import *
-from logger import *
+from logSetup import *
 from httpservice import *
 
 configs = {}
-pwd = os.getcwd()
+
 with open(f'../config/hydroConf.yaml') as fp:
     configs = yaml.load(fp, Loader=yaml.FullLoader)
 
+#Project Info
+projectName = configs["projectName"]
+
 #logfiles informations
-logFileLocation = configs["logFileLocation"]
-infoLogFile = configs["infoLogFile"]
-debuglogFile = configs["debuglogFile"]
+logFilename = configs["filename"]
+logLevel = configs["level"]
 dateTime = datetime.datetime.now()
 
 #dataBase informations
@@ -35,26 +37,16 @@ db = configs["dbname"]
 httpHost = configs["chpHost"]
 httpPort = configs["chpPort"]
 
-print('!!!!!!!!!!!!!!!!!!!!{}:{}'.format(userName, password))
+#SetupLogging
 
-def checkLogFiles():
+loggerSetup = logSetupClass(projectName, logFilename, logLevel)
+logger = logging.getLogger()
+logging.debug(f"initiate http-service now")
+sqlDrv = mysqlDrv(userName, password, host, db)
+logging.debug(f"initiate mysqlDriver now")
+http = httpService(httpHost, httpPort, sqlDrv)
 
-    try:               
-        with open(f'{logFileLocation}{infoLogFile}', 'r') as fp:
-            result = fp.read()
-        
-    except:                
-        os.system(f'mkdir -p {logFileLocation}')
-
-checkLogFiles()
-
-log = logging(logFileLocation, infoLogFile, debuglogFile)
-sqlDrv = mysqlDrv(userName, password, host, db, log)
-http = httpService(httpHost, httpPort, log, sqlDrv)
-
-log.info(f'{dateTime}\t------------------HydroClear api Starting-----------------')
-log.debug(f'{dateTime}\t------------------HydroClear api Starting-----------------')
-
+logging.debug(f"initiate CherryPy now")
 cherrypy.engine.start()
 cherrypy.engine.block()
 
