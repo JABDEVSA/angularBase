@@ -9,7 +9,7 @@ level : debug
 dbuserName : jab
 dbpassword : 222
 dbhost : 127.0.0.1
-dbname : hydroclear
+dbname : angulatBase
 
 #CherryPi Settings
 chpHost : 0.0.0.0
