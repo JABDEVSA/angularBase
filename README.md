@@ -210,6 +210,60 @@ Here is a tip: Use MySqlBench and connect over ssh to work with the database via
 
 With the DB setup you can proceed to the configurations file to connect.
 
+## Config file
+
+This configurations file makes use of yaml to register all credentials and port configurations needed to setup and run the project. It is quite self explandatory, if we need to have other, additional or new configurations just add it and like the main.py application with the detail.
+
+```
+    #Logging System Details
+    logFileLocation : /home/jab/log/hydro/
+    infoLogFile : hydInfo.log
+    debuglogFile : hydDebug.log
+
+    #Database system details
+    dbuserName : jab
+    dbpassword : 222
+    dbhost : 127.0.0.1
+    dbname : hydroclear
+
+    #CherryPi Settings
+    chpHost : 0.0.0.0
+    chpPort : 50091
+
+```
+
+This file must be in place for the system to start-up and run.
+
+## The http-service files
+
+In the http-service we have a core files:
+```
+    --http-service
+     |--main
+     |     |-main.py
+     |-httpservice.py
+     |-logger.py
+     |-mysqldrv.py
+
+```
+
+The main.py application is our initial entry point it will read the config file and setup the rest.
+
+The httpservice.py file is our REST application making use of flask under cherrypy to serve it.
+
+The logger.py file for setting up the python logger.
+
+The mysqldrv.py for the mysql operations needed. Please ensure to create databse for project and update config file.
+
+To start this backend do the following:
+```
+    $ cd httpservice
+    $ ./main/main.py
+
+ For any development please source env/bin/activate
+
+```
+
 ## Let's Run it now
 
 For this to work do the following:
@@ -275,60 +329,7 @@ Nice, so now we can test this:
 
 If you get that it is working, have a look in the http-service/http-service.py file and you will see the GET and POST calls.
 
-## Config file
-
-This configurations file makes use of yaml to register all credentials and port configurations needed to setup and run the project. It is quite self explandatory, if we need to have other, additional or new configurations just add it and like the main.py application with the detail.
-
-```
-    #Logging System Details
-    logFileLocation : /home/jab/log/hydro/
-    infoLogFile : hydInfo.log
-    debuglogFile : hydDebug.log
-
-    #Database system details
-    dbuserName : jab
-    dbpassword : 222
-    dbhost : 127.0.0.1
-    dbname : hydroclear
-
-    #CherryPi Settings
-    chpHost : 0.0.0.0
-    chpPort : 50091
-
-```
-
-This file must be in place for the system to start-up and run.
-
-## The http-service files
-
-In the http-service we have a core files:
-```
-    --http-service
-     |--main
-     |     |-main.py
-     |-httpservice.py
-     |-logger.py
-     |-mysqldrv.py
-
-```
-
-The main.py application is our initial entry point it will read the config file and setup the rest.
-
-The httpservice.py file is our REST application making use of flask under cherrypy to serve it.
-
-The logger.py file for setting up the python logger.
-
-The mysqldrv.py for the mysql operations needed. Please ensure to create databse for project and update config file.
-
-To start this backend do the following:
-```
-    $ cd httpservice
-    $ ./main/main.py
-
- For any development please source env/bin/activate
-
-```
-
+Make sure that you created the database based on your project name, updated the config file and then it will run.
 
 ## Have fun and enjoy
 
