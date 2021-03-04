@@ -46,7 +46,7 @@ Install venv:
     $ sudo apt install python3-pip
  
   Then install venv
-    $ python3 -m pip install virtualenv
+    $ apt-get install python3-venv    
  
   Navigate to the http-service dir
     $ cd http-service
@@ -63,6 +63,8 @@ With this done we have a clean venv system with its own Python3 binary and packa
 ```
   Find the shebang of python3 for the applications
     $ which python3
+
+  Have a look then the python3 must be located in your env structure.
  
   Install packages
     $ python3 -m pip install <package_name>
@@ -98,13 +100,15 @@ I will recomend to delete the webapp dir and create a new one and the greate a n
 Okay so for that we have a couple of requirements here:
 ```
  First install nodejs
-    $ sudo apt install nodejs
+    $ sudo apt install nodejs -y
     $ node -v
-    $ sudo apt install npm
+    $ sudo apt install npm -y
     $ npm -v
 ```
 
 Good now we have nodejs and npm installed, let's install angular/cli:
+
+note: If you just want to use the package.js in the existing webapp just use npm intall and it will fetch all the packages needed. First ensure that you have Angular and then npm installed.
 
 ```
  Install Angular cli
@@ -153,7 +157,7 @@ Lets install and configure our mysql database:
 
 ```
  Install mysql on ubuntu
-    $ sudo apt install mysql-server
+    $ sudo apt install mysql-server -y
 
  Please note that you installed it using sudo so change to root and login
     $ sudo su
@@ -191,7 +195,7 @@ Lets install and configure our mysql database:
 To ensure that we can connect from any ip please do the following:
 ```
  Change mysql.config file with
-  $ sudo nano mysql.conf.d/mysqld.cnf
+  $ sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
 
  Change the following
   mysql.conf.d/mysqld.cnf:bind-address            = 0.0.0.0
@@ -206,7 +210,70 @@ Here is a tip: Use MySqlBench and connect over ssh to work with the database via
 
 With the DB setup you can proceed to the configurations file to connect.
 
+## Let's Run it now
 
+For this to work do the following:
+
+``` 
+  Start your env with
+   $ cd http-service
+   $ source env/bin/activate
+   $ which python3
+
+  output:         //in my case here
+
+    /home/jab/project/angularbase/http-service/env/bin/python3
+
+  copy this and past in main/main.py file
+   $ nano main/main.py
+
+  now lets run the application
+   $ ./main/main.py
+
+```
+
+Now we must have a running rest service / http-service here, it will have a output of:
+
+```
+  OUTPUT:
+
+  [04/Mar/2021:11:20:51] ENGINE Bus STARTING
+  [04/Mar/2021:11:20:51] ENGINE Serving on http://0.0.0.0:5000
+  [04/Mar/2021:11:20:51] ENGINE Bus STARTED
+
+```
+
+Nice, so now we can test this:
+
+```
+  First we test the get, open postman and select GET command, pop this into the URL:
+
+    http://localhost:5000/angularBase/services/runGetTest
+
+  OUTPUT:
+
+   {
+      "result": "runGetTest"
+   }
+
+  Then lets test the post with:
+
+   http://localhost:5000/angularBase/services/runPostTest
+
+  Before you run it create a raw body and enter this:
+
+   {
+      "TestMsg" : "TestMessage"
+   }
+
+  OUTPUT:
+   {
+      "result" : "TestMessage"
+   }
+
+```
+
+If you get that it is working, have a look in the http-service/http-service.py file and you will see the GET and POST calls.
 
 ## Config file
 

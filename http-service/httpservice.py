@@ -37,9 +37,9 @@ class httpService:
             'tools.response_headers.headers': [('Content-Type', 'application/json'), ('Access-Control-Allow-Origin', f'http://{host}')]
         })
 
-        self.web_app.add_url_rule("/hydroclear/services/runGetTest", "runGetTest",
+        self.web_app.add_url_rule("/angularBase/services/runGetTest", "runGetTest",
                                   self.runGetTest, methods=["GET"])
-        self.web_app.add_url_rule("/hydroclear/services/runPostTest", "runPostTest",
+        self.web_app.add_url_rule("/angularBase/services/runPostTest", "runPostTest",
                                   self.runPostTest, methods=["POST"])
 
         
