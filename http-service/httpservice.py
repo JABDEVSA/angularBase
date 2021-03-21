@@ -69,7 +69,7 @@ class httpService:
     
         logging.debug(f"REST: => runDB_Write()12345")
 
-        sql = "insert into (new_table) values('TestName')"
+        sql = "insert into new_table (value) values('TestName')"
 
         self.dataService.sqlCmd(sql)
 
@@ -79,9 +79,9 @@ class httpService:
 
         logging.debug(f"REST: => runDB_Read()")
 
-        sql = "select * from new_table"
+        sql = "SELECT * FROM angularBase.new_table"
 
-        result = self.dataService.sqlCmd(sql)
+        result = self.dataService.sqlFetchAll(sql)
 
         return jsonify(result=result), 200
         

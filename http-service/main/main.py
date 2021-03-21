@@ -41,7 +41,7 @@ httpPort = configs["chpPort"]
 
 #SetupLogging
 
-t.sleep(5)
+t.sleep(3)
 
 loggerSetup = logSetupClass(projectName, logFilename, logLevel)
 logger = logging.getLogger(__name__)
