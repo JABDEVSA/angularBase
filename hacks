@@ -1,0 +1,10 @@
+docker network inspect bridge
+docker system prune -a
+
+docker network ls
+
+docker network create -d localNet \
+  --subnet=192.168.8.0/24 \
+  --gateway=192.168.8.1 \
+  -o parent=enp0s8 \
+  my-localNet

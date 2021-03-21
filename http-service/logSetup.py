@@ -9,7 +9,7 @@ class logSetupClass:
 
         whoami = getpass.getuser()
 
-        logFilePath = f'/home/{whoami}/.var/logs/{projectName}/'
+        logFilePath = f'/app/.var/logs/{projectName}/'
         logFileComplete = logFilePath + logFilename
 
         if not os.path.exists(logFilePath):

@@ -8,14 +8,15 @@ logger = logging.getLogger(__name__)
 
 class mysqlDrv:    
 
-    def __init__(self, userName, password, host, db):
+    def __init__(self, userName, password, host, port, db):
        
         self.uName = userName
         self.passwd = password
         self.host = host
+        self.port = port
         self.db = db
         self.result = ''
-        self.cnx = mysql.connector.connect(user = self.uName, password = self.passwd , host = self.host, database = self.db)
+        self.cnx = mysql.connector.connect(user = self.uName, password = self.passwd , host = self.host, database = self.db, port = self.port)
         self.cnx.close()
 
         logging.debug(f"SQLDRV: init done")

@@ -41,6 +41,10 @@ class httpService:
                                   self.runGetTest, methods=["GET"])
         self.web_app.add_url_rule("/angularBase/services/runPostTest", "runPostTest",
                                   self.runPostTest, methods=["POST"])
+        self.web_app.add_url_rule("/angularBase/services/runDB_Write", "runDB_Write",
+                                  self.runDB_Write, methods=["GET"])
+        self.web_app.add_url_rule("/angularBase/services/runDB_Read", "runDB_Read",
+                                  self.runDB_Read, methods=["GET"])
 
         
         logging.debug(f"REST: init done")
@@ -58,6 +62,26 @@ class httpService:
         data = json.loads(request.data)
 
         result = data["TestMsg"]
+
+        return jsonify(result=result), 200
+
+    def runDB_Write(self):
+    
+        logging.debug(f"REST: => runDB_Write()12345")
+
+        sql = "insert into (new_table) values('TestName')"
+
+        self.dataService.sqlCmd(sql)
+
+        return jsonify(result="runDB_Write => Done!!!"), 200
+
+    def runDB_Read(self):
+
+        logging.debug(f"REST: => runDB_Read()")
+
+        sql = "select * from new_table"
+
+        result = self.dataService.sqlCmd(sql)
 
         return jsonify(result=result), 200
         

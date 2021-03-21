@@ -1,4 +1,4 @@
-#! /home/jab/projects/hydroclear/http-service/env/bin/python3
+#! /usr/bin/python3
 
 import sys
 sys.path.append("..")
@@ -7,6 +7,7 @@ import getpass
 import datetime
 import yaml
 import cherrypy
+import time as t
 
 os.chdir(os.path.dirname(__file__))
 
@@ -30,7 +31,8 @@ dateTime = datetime.datetime.now()
 #dataBase informations
 userName = configs["dbuserName"]
 password = str(configs["dbpassword"])
-host = configs["dbhost"]
+db_host = configs["dbhost"]
+db_port = configs["dbport"]
 db = configs["dbname"]
 
 #Http details
@@ -39,10 +41,12 @@ httpPort = configs["chpPort"]
 
 #SetupLogging
 
+t.sleep(5)
+
 loggerSetup = logSetupClass(projectName, logFilename, logLevel)
 logger = logging.getLogger(__name__)
 logging.debug(f"initiate http-service now")
-sqlDrv = mysqlDrv(userName, password, host, db)
+sqlDrv = mysqlDrv(userName, password, db_host, db_port, db)
 logging.debug(f"initiate mysqlDriver now")
 http = httpService(httpHost, httpPort, sqlDrv)
 

@@ -1,0 +1,60 @@
+version: '3.8'
+
+networks:
+    localdev:
+      driver: bridge
+
+services:
+    mysql-db:
+        image: mysql:latest
+        container_name: angbase_db
+        restart: always
+        environment:
+            MYSQL_DATABASE: 'angulatBase'
+            MYSQL_USER: 'sporos'
+            MYSQL_PASSWORD: '222'
+            MYSQL_ROOT_PASSWORD: '5404271'
+        ports:
+            - '3307:3306'
+        expose:
+            - '3307'
+        volumes: 
+            - /home/jab/.mysql_data/angularBase_db:/var/lib/mysql
+        networks:
+            - localdev
+
+    http-service:   #This service will start and will connect to db after 5sec
+        build: 
+            context: ./http-service
+            dockerfile: Dockerfile
+        ports:
+            - '5000:5000'
+        container_name: angbase_rest
+
+        expose:
+            - '5000'
+        volumes:
+            - ./http-service:/app
+            - /home/jab/.var/logs:/app/.var/logs
+        depends_on:
+            - mysql-db
+        networks:
+            - localdev
+        # command: tail -f /dev/null #This will keep the image active
+        
+    # web-app:     
+    #     build: 
+    #         context: ./webapp
+    #         dockerfile: Dockerfile
+    #     ports:
+    #         - '4200:4200'
+    #     volumes:
+    #         - ./webapp:/app
+    #     depends_on:
+    #         - http-service
+    #     command: tail -f /dev/null #This will keep the image active
+    # database: 
+
+    # volumes: #Only for non-bind-mounts
+
+

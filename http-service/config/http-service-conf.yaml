@@ -6,10 +6,11 @@ filename : angulatBase.log
 level : debug
 
 #Database system details
-dbuserName : jab
-dbpassword : 222
-dbhost : 127.0.0.1
-dbname : angulatBase
+dbuserName : root
+dbpassword : '5404271'
+dbhost : 'angbase_db' 
+dbport : 3306
+dbname : angularBase
 
 #CherryPi Settings
 chpHost : 0.0.0.0
