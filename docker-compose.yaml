@@ -51,7 +51,7 @@ services:
         expose:
             - '4200'
         volumes:
-            - ./webapp:/app # Keep in mind node_modules must be in the Dev dir for this to work...
+            - ./webapp/src:/app/src # Keep in mind node_modules must be in the Dev dir for this to work...
         depends_on:
             - mysql-db
             - http-service
