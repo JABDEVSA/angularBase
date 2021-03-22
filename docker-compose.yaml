@@ -7,7 +7,7 @@ networks:
 services:
     mysql-db:
         image: mysql:latest
-        container_name: angbase_db
+        container_name: angbase_db # Replace angbase with your project prefix
         restart: always
         environment:
             MYSQL_DATABASE: 'angulatBase'
@@ -27,10 +27,9 @@ services:
         build: 
             context: ./http-service
             dockerfile: Dockerfile
+        container_name: angbase_rest # Replace angbase with your project prefix
         ports:
             - '5000:5000'
-        container_name: angbase_rest
-
         expose:
             - '5000'
         volumes:
@@ -42,19 +41,21 @@ services:
             - localdev
         # command: tail -f /dev/null #This will keep the image active
         
-    # web-app:     
-    #     build: 
-    #         context: ./webapp
-    #         dockerfile: Dockerfile
-    #     ports:
-    #         - '4200:4200'
-    #     volumes:
-    #         - ./webapp:/app
-    #     depends_on:
-    #         - http-service
-    #     command: tail -f /dev/null #This will keep the image active
-    # database: 
-
-    # volumes: #Only for non-bind-mounts
-
+    web-app:     
+        build: 
+            context: ./webapp
+            dockerfile: Dockerfile_development
+        container_name: angbase_web # Replace angbase with your project prefix
+        ports:
+            - '4200:4200'
+        expose:
+            - '4200'
+        volumes:
+            - ./webapp:/app # Keep in mind node_modules must be in the Dev dir for this to work...
+        depends_on:
+            - mysql-db
+            - http-service
+        networks:
+            - localdev
+        # command: tail -f /dev/null #This will keep the image active
 

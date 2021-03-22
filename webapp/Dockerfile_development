@@ -1,0 +1,16 @@
+FROM ubuntu:20.10
+
+RUN apt-get update && \
+    apt-get install nodejs npm nano -y
+
+WORKDIR /app
+
+COPY ./package*.json ./
+
+RUN npm install --no-optional
+
+RUN npm install -g @angular/cli --save-dev
+
+COPY ./ ./
+
+CMD ["npm", "start"]
