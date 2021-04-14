@@ -1,8 +1,8 @@
 #ProjectDetails
-projectName : angulatBase
+projectName : angularBase
 
 #Logging System Details
-filename : angulatBase.log
+filename : angularBase.log
 level : debug
 
 #Database system details
