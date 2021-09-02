@@ -30,3 +30,4 @@ http-service/testDir/
 http-service/.var
 http-service/var
 .var
+webapp/node_modules

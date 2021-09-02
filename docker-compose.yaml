@@ -51,7 +51,7 @@ services:
             - '5001'
         volumes:
             - ./http-service:/app
-            - ./http-services/var/logs:/app/.var/logs
+            - ./http-service/var/logs:/app/.var/logs
         depends_on:
             - mysql-db
             - web-app
