@@ -15,8 +15,9 @@ logger = logging.getLogger(__name__)
 
 class httpService:
 
-    def __init__(self, host, port, dataservice):        
+    def __init__(self, projectName, host, port, dataservice):        
 
+        self.projectName = projectName
         self.host = host
         self.port = port      
         self.dataService = dataservice
@@ -37,13 +38,13 @@ class httpService:
             'tools.response_headers.headers': [('Content-Type', 'application/json'), ('Access-Control-Allow-Origin', f'http://{host}')]
         })
 
-        self.web_app.add_url_rule("/angularBase/services/runGetTest", "runGetTest",
+        self.web_app.add_url_rule(f"/{self.projectName}/services/runGetTest", "runGetTest",
                                   self.runGetTest, methods=["GET"])
-        self.web_app.add_url_rule("/angularBase/services/runPostTest", "runPostTest",
+        self.web_app.add_url_rule(f"/{self.projectName}/services/runPostTest", "runPostTest",
                                   self.runPostTest, methods=["POST"])
-        self.web_app.add_url_rule("/angularBase/services/runDB_Write", "runDB_Write",
+        self.web_app.add_url_rule(f"/{self.projectName}/services/runDB_Write", "runDB_Write",
                                   self.runDB_Write, methods=["GET"])
-        self.web_app.add_url_rule("/angularBase/services/runDB_Read", "runDB_Read",
+        self.web_app.add_url_rule(f"/{self.projectName}/services/runDB_Read", "runDB_Read",
                                   self.runDB_Read, methods=["GET"])
 
         

@@ -27,3 +27,6 @@ hs_err_pid*
 
 http-service/env/
 http-service/testDir/
+http-service/.var
+http-service/var
+.var

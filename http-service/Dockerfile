@@ -13,7 +13,10 @@ RUN python3 -m pip install -r requirements.txt
 
 COPY ./ ./
 
-CMD ["./main/main.py"]
+WORKDIR /app/main
+
+CMD "./main.py"
+
 
 # import mysql.connector
 # from mysql.connector import errorcode

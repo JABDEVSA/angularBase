@@ -14,4 +14,4 @@ dbname : angularBase
 
 #CherryPi Settings
 chpHost : 0.0.0.0
-chpPort : 5000
+chpPort : 5001

@@ -3,11 +3,10 @@
 import sys
 sys.path.append("..")
 import os
-import getpass
-import datetime
 import yaml
 import cherrypy
 import time as t
+import datetime
 
 os.chdir(os.path.dirname(__file__))
 
@@ -41,14 +40,12 @@ httpPort = configs["chpPort"]
 
 #SetupLogging
 
-t.sleep(3)
-
 loggerSetup = logSetupClass(projectName, logFilename, logLevel)
 logger = logging.getLogger(__name__)
 logging.debug(f"initiate http-service now")
 sqlDrv = mysqlDrv(userName, password, db_host, db_port, db)
 logging.debug(f"initiate mysqlDriver now")
-http = httpService(httpHost, httpPort, sqlDrv)
+http = httpService(projectName, httpHost, httpPort, sqlDrv)
 
 logging.debug(f"initiate CherryPy now")
 cherrypy.engine.start()
